@@ -1,0 +1,28 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+  dir: packages/next-auth
+  entrypoint: '/bin/bash'
+  args: ['-c',
+         'gcloud artifacts print-settings npm --project=$PROJECT_ID --repository=$_REPOSITORY --location=$_LOCATION --scope=$_SCOPE >> .npmrc']
+- name: node:lts-alpine
+  dir: packages/next-auth
+  entrypoint: npx
+  args: ['google-artifactregistry-auth']
+- name: node:lts-alpine
+  dir: packages/next-auth
+  entrypoint: npm
+  args: ['install', '-g', 'pnpm', 'typescript']
+- name: node:lts-alpine
+  dir: packages/next-auth
+  entrypoint: npx
+  args: ['pnpm', 'install']
+- name: node:lts-alpine
+  entrypoint: node
+  args: ['.github/version-pr/index.js']
+  env:
+  - 'GITHUB_SHA=${COMMIT_SHA}'
+  - 'PR_NUMBER=1'
+- name: node:lts-alpine
+  dir: packages/next-auth
+  entrypoint: npx
+  args: ['pnpm', 'publish', '--no-git-checks', '--access', 'public']
