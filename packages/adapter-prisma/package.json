@@ -46,7 +46,7 @@
     "@prisma/client": "^3.10.0",
     "jest": "^27.4.3",
     "mongodb": "^4.4.0",
-    "next-auth": "workspace:*",
+    "@dogomedia/next-auth": "workspace:*",
     "prisma": "^3.10.0"
   },
   "jest": {

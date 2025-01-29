@@ -42,7 +42,7 @@
     "@next-auth/tsconfig": "workspace:*",
     "@types/uuid": ">=8",
     "jest": "^29",
-    "next-auth": "workspace:*"
+    "@dogomedia/next-auth": "workspace:*"
   },
   "dependencies": {
     "uuid": "^9"

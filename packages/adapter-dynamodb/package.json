@@ -41,6 +41,6 @@
     "@next-auth/tsconfig": "workspace:*",
     "@shelf/jest-dynamodb": "^2.1.0",
     "jest": "^27.4.3",
-    "next-auth": "workspace:*"
+    "@dogomedia/next-auth": "workspace:*"
   }
 }
